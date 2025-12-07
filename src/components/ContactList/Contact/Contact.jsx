@@ -2,12 +2,12 @@ import userAvatar from '../../../assets/user.svg';
 import phoneIcon from '../../../assets/phone.svg';
 import Button from '../../Button/Button';
 import css from './Contact.module.css';
-import { deleteContact } from '../../../redux/contactsOps';
+import { deleteContact } from '../../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 
-const Contact = ({ con: { name, phone, id } }) => {
+const Contact = ({ con: { name, number, id } }) => {
   const dispatch = useDispatch();
-  if ((!name, !phone, !id)) {
+  if ((!name, !number, !id)) {
     return null;
   }
   return (
@@ -29,7 +29,7 @@ const Contact = ({ con: { name, phone, id } }) => {
             aria-label="phoneIcon"
             alt="phone Icon"
           />
-          {phone}
+          {number}
         </span>
       </p>
 
