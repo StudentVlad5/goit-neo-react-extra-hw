@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.goit.global/';
 
@@ -19,6 +20,7 @@ export const register = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (e) {
+      toast.error(`Registration failed. Please try again. ${e?.message}`);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -32,6 +34,7 @@ export const login = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (e) {
+      toast.error(`Login failed. Please try again. ${e?.message}`);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -42,6 +45,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     clearAuthHeader();
   } catch (e) {
+    toast.error(`Logout failed. Please try again. ${e?.message}`);
     return thunkAPI.rejectWithValue(e.message);
   }
 });
@@ -61,6 +65,7 @@ export const refreshUser = createAsyncThunk(
       const response = await axios.get('/users/current');
       return response.data;
     } catch (e) {
+      toast.error(`You need to log in again`);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
