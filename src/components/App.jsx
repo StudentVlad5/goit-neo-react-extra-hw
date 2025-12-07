@@ -13,11 +13,12 @@ const PhonePage = lazy(() => import('../pages/PhonePage'));
 import { PrivateRoute } from '../guards/PrivateRoute';
 import { RestrictedRoute } from '../guards/RestrictedRoute';
 import NotFound from './NotFound/NotFound';
-import { selectIsRefreshing } from '../redux/auth/selectors';
+import { selectIsLoggedIn, selectIsRefreshing } from '../redux/auth/selectors';
 
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -31,7 +32,16 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Navigation />}>
-            <Route index element={<div>Please login regarding access</div>} />
+            <Route
+              index
+              element={
+                isLoggedIn ? (
+                  <div>Welcome back ti HomePage!</div>
+                ) : (
+                  <div>Please login to access the contacts</div>
+                )
+              }
+            />
             <Route
               path="login"
               element={
