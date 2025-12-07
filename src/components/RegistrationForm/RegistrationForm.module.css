@@ -21,6 +21,7 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.03);
   margin-right: auto;
+  margin-top: 30px;
 }
 .formContainer > div {
   display: flex;
