@@ -1,0 +1,72 @@
+@keyframes spin-animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.searchContaner {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  padding: 20px;
+}
+
+.searchContaner label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #344054;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+  text-align: start;
+}
+
+.searchInput {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  color: #101828;
+  background-color: #ffffff;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.searchInput:focus {
+  border-color: #7f56d9;
+  box-shadow: 0 0 0 4px rgba(127, 86, 217, 0.15);
+}
+
+.searchInput:hover {
+  border-color: #98a2b3;
+}
+
+.closeIcon {
+  transition: rotate 0.4s ease-in-out;
+}
+.closeBtn:hover .closeIcon {
+  animation: spin-animation 2s linear infinite;
+  color: #7f56d9;
+}
+.searchBox {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+}
+.closeBtn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-left: -10px;
+}
